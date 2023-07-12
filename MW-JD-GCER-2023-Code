@@ -1,0 +1,58 @@
+#include <kipr/wombat.h>
+void sort(int n, int l);
+int main()
+    //on 4000
+    //off 3500
+{
+    int n =0;
+    enable_servos();
+    set_servo_position(0,450);
+    sort(n, -1000);
+    n++;
+    sort(n, -1900);
+    n--;
+    sort(n, -2100);
+    n++;
+    sort(n, -2100);
+    n--;
+    sort(n, -2400);
+    n++;
+    sort(n, -2500);
+    n--;
+    sort(n, -1900);
+    n++;
+    sort(n, -2100);
+    n--;
+    sort(n, -2100);
+    n++;
+    //sort(n, -1700);
+    //n--;
+   
+    return 0;
+}
+void sort(int n, int l){
+    cmpc(0);
+    while(gmpc(0) > l){
+        if(analog(1)>3300){
+        motor(0,-40);
+        motor(3,-50);
+        msleep(10);
+        }
+        else{
+        motor(0,-50);
+        motor(3,-40);
+        msleep(10);
+        }
+    }
+    ao();
+    msleep(1000);
+    if(n==0){
+    set_servo_position(0,2047);
+    msleep(1000);
+    }
+    else{
+    set_servo_position(0,450);
+    msleep(1000);
+    }
+    cmpc(0);
+}
